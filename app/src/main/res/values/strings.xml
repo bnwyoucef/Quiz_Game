@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Quiz Game</string>
+    <string name="quiz_game">Quiz Game</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Sign in</string>
+    <string name="don_t_have_account_sign_up">Don\'t have an account? <font color='#FF03DAC5'> Sign up</font></string>
+    <string name="forget_your_password">Forget your password?</string>
+    <string name="or">OR</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_an_account_sign_in">already have an account? <font color='#FF03DAC5'> Sign in</font></string>
+    <string name="send">Send</string>
+    <string name="reset_your_password">Reset your password:</string>
+    <string name="signInGoogle">Sign in with Google</string>
+    <string name="start_game">Start game</string>
+    <string name="sign_out">Sign out</string>
+    <string name="time">Time:</string>
+    <string name="right_answer">Correct:</string>
+    <string name="wrong">Wrong:</string>
+    <string name="next">Next</string>
+    <string name="exit">Exit</string>
+    <string name="_0">0</string>
+    <string name="timeOut">Sorry time is out</string>
+    <string name="final_score">Final Score</string>
+    <string name="correct_answer">Correct answer:</string>
+    <string name="wrong_answer">Wrong answer:</string>
+    <string name="play_again">Play again</string>
+</resources>
