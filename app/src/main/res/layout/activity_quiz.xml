@@ -140,7 +140,7 @@
                  android:id="@+id/exitButton"
                  android:layout_width="120dp"
                  android:layout_height="wrap_content"
-                 android:backgroundTint="#009688"
+                 android:backgroundTint="@color/darkBlue"
                  android:text="@string/exit"
                  android:textSize="20sp" />
 
@@ -148,8 +148,8 @@
                  android:id="@+id/nextButton"
                  android:layout_width="120dp"
                  android:layout_height="wrap_content"
-                 android:layout_marginStart="110dp"
-                 android:backgroundTint="#009688"
+                 android:layout_marginStart="50dp"
+                 android:backgroundTint="@color/darkBlue"
                  android:text="@string/next"
                  android:textSize="20sp" />
 

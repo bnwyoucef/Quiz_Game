@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:src="@drawable/student_ready_scl"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"/>
+        android:layout_gravity="center" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:textSize="20sp"
         android:layout_gravity="center"
         android:backgroundTint="#022839"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/startGameButton"/>
     <Button
         android:layout_width="wrap_content"

@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,10 +51,12 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         initViews();
-        //to generate a unique random numbers
-        object = Stream.generate(() -> (new Random()).nextInt(6)).distinct().limit(6).toArray();
-        numberAllQuestion = object.length -1;
+        /**
+         * generate a unique random number in a table
+         * **/
+        object = Stream.generate(() -> (new Random()).nextInt(9)).distinct().limit(9).toArray();
         generateQuestion(0);
+        numberAllQuestion = object.length -1;
         nextButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -161,13 +164,25 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * show the questions and the answers
+     * get the information from the realDB fire base
+     * **/
     private void generateQuestion(int number) {
+        //get a random number of question from the table
         int i = (int) object[number];
+        /**
+         * reset the background color to the original one
+         * when the player chose an answer the color will change
+         * **/
         choiceOne.setBackgroundColor(getResources().getColor(R.color.darkBlue));
         choiceTwo.setBackgroundColor(getResources().getColor(R.color.darkBlue));
         choiceThree.setBackgroundColor(getResources().getColor(R.color.darkBlue));
         choiceFour.setBackgroundColor(getResources().getColor(R.color.darkBlue));
-        timer = new CountDownTimer(15000,1000) {
+        /**
+         * set a timer to answer the questions 20000-->20s, 1000-->goes up by 1s
+         * **/
+        timer = new CountDownTimer(20000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeTxt.setText(String.valueOf(millisUntilFinished / 1000));
@@ -197,6 +212,10 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 });
     }
+    /**
+     * if the player chose a wrong answer
+     * we will show him the right one
+     * **/
     private void showCorrectAnswer() {
         if (correctAnswer.equals("a")) {
             choiceOne.setBackgroundColor(Color.GREEN);
@@ -208,6 +227,10 @@ public class QuizActivity extends AppCompatActivity {
             choiceFour.setBackgroundColor(Color.GREEN);
         }
     }
+    /**
+     * the player can click one time to the answers
+     * when the player chose one answer the timer will stop
+     * **/
     private void whenClickAnswer(boolean isClicked) {
         choiceOne.setClickable(isClicked);
         choiceTwo.setClickable(isClicked);
@@ -230,9 +253,12 @@ public class QuizActivity extends AppCompatActivity {
         exitButton = findViewById(R.id.exitButton);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference();
+        reference = firebaseDatabase.getReference();
     }
-
+    /**
+     * send the player score to the database
+     * userID to make difference between all players
+     * **/
     private void sendScoreDB() {
         String userID = firebaseAuth.getCurrentUser().getUid();
         reference.child("Score").child(userID).child("correct").setValue(correctAnswerNumber);
