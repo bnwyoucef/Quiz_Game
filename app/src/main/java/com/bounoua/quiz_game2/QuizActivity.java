@@ -44,7 +44,6 @@ public class QuizActivity extends AppCompatActivity {
     private int numberAllQuestion;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference reference;
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,9 +178,6 @@ public class QuizActivity extends AppCompatActivity {
         choiceTwo.setBackgroundColor(getResources().getColor(R.color.darkBlue));
         choiceThree.setBackgroundColor(getResources().getColor(R.color.darkBlue));
         choiceFour.setBackgroundColor(getResources().getColor(R.color.darkBlue));
-        /**
-         * set a timer to answer the questions 20000-->20s, 1000-->goes up by 1s
-         * **/
         timer = new CountDownTimer(20000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {

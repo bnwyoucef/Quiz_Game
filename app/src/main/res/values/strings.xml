@@ -25,4 +25,9 @@
     <string name="correct_answer">Correct answer:</string>
     <string name="wrong_answer">Wrong answer:</string>
     <string name="play_again">Play again</string>
+    <string name="remarque">remarque</string>
+    <string name="notBad">Not bad!</string>
+    <string name="good">Good!</string>
+    <string name="veryGood">Very Good!</string>
+    <string name="amazing">Amazing!</string>
 </resources>

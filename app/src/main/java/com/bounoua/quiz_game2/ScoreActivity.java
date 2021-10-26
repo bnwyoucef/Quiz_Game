@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ScoreActivity extends AppCompatActivity {
 
-    private TextView correctAnswer, wrongAnswer;
+    private TextView correctAnswer, wrongAnswer,textRemarque;
     private Button exitBtn,playAgainBtn;
     private DatabaseReference reference;
     private String userID;
@@ -37,6 +37,16 @@ public class ScoreActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 correctAnswer.setText(snapshot.child(userID).child("correct").getValue().toString());
                 wrongAnswer.setText(snapshot.child(userID).child("wrong").getValue().toString());
+                int correctNum = Integer.parseInt(snapshot.child(userID).child("correct").getValue().toString());
+                if (correctNum <= 3) {
+                    textRemarque.setText(R.string.notBad);
+                }else if((correctNum > 3) && (correctNum <= 5)) {
+                    textRemarque.setText(R.string.good);
+                }else if((correctNum > 5) && (correctNum < 9)) {
+                    textRemarque.setText(R.string.veryGood);
+                }else {
+                    textRemarque.setText(R.string.amazing);
+                }
             }
 
             @Override
@@ -78,6 +88,7 @@ public class ScoreActivity extends AppCompatActivity {
         correctAnswer = findViewById(R.id.scoreCorrect);
         wrongAnswer = findViewById(R.id.scoreWrong);
         exitBtn = findViewById(R.id.exitFinaleScore);
+        textRemarque = findViewById(R.id.textRemarque);
         playAgainBtn = findViewById(R.id.playAgainFinaleScore);
         reference = FirebaseDatabase.getInstance().getReference();
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
